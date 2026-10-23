@@ -279,6 +279,40 @@ describe('AddTaskBarActionsComponent', () => {
     });
   });
 
+  describe('Deadline button', () => {
+    const getDeadlineBtn = (): HTMLElement | null =>
+      fixture.nativeElement.querySelector('[data-test="add-task-bar-deadline-btn"]');
+    const getClearDeadlineBtn = (): HTMLElement | null =>
+      fixture.nativeElement.querySelector(
+        '[data-test="add-task-bar-clear-deadline-btn"]',
+      );
+
+    it('is shown per default', () => {
+      fixture.detectChanges();
+      expect(getDeadlineBtn()).not.toBeNull();
+    });
+
+    it('shows an empty deadline button without clear button when enabled', () => {
+      fixture.componentRef.setInput('isHideDeadlineBtn', false);
+      fixture.detectChanges();
+
+      expect(getDeadlineBtn()).not.toBeNull();
+      expect(getDeadlineBtn()!.classList).not.toContain('has-value');
+      expect(getClearDeadlineBtn()).toBeNull();
+    });
+
+    it('shows the deadline and clear button once a deadline is set', () => {
+      (mockStateService as any)._mockStateSignal.set({
+        ...mockState,
+        deadlineDate: '2199-12-12',
+      });
+      fixture.detectChanges();
+
+      expect(getDeadlineBtn()!.classList).toContain('has-value');
+      expect(getClearDeadlineBtn()).not.toBeNull();
+    });
+  });
+
   describe('Computed Properties', () => {
     it('should translate the default inbox project title in the action button', () => {
       mockProjectsSignal.set([INBOX_PROJECT]);

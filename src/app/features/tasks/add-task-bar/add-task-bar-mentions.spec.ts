@@ -116,6 +116,7 @@ describe('AddTaskBarComponent Mentions Integration', () => {
     });
     const globalConfigServiceSpy = jasmine.createSpyObj('GlobalConfigService', [], {
       shortSyntax$: shortSyntaxSubject,
+      shortSyntax: () => shortSyntaxSubject.value,
       localization: () => ({ timeLocale: DEFAULT_LOCALE }),
       misc$: miscSubject,
       tasks$: new BehaviorSubject({ defaultProjectId: null }),

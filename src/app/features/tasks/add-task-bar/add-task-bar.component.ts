@@ -204,6 +204,9 @@ export class AddTaskBarComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   hasNewTags = computed(() => this.stateService.state().newTagTitles.length > 0);
+  isDeadlineSyntaxEnabled = computed(
+    () => !!this._globalConfigService.shortSyntax()?.isEnableDeadline,
+  );
   currentProject = computed(() =>
     this.projects().find((p) => p.id === this.stateService.state().projectId),
   );

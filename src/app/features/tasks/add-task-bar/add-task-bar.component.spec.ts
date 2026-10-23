@@ -225,6 +225,7 @@ describe('AddTaskBarComponent', () => {
       misc$: new BehaviorSubject<MiscConfig>(mockMiscConfig),
       tasks$: new BehaviorSubject({ defaultProjectId: null }),
       shortSyntax$: of({}),
+      shortSyntax: signal({}),
       localization: () => ({ timeLocale: DEFAULT_LOCALE }),
     });
     mockStore = jasmine.createSpyObj('Store', ['select', 'dispatch', 'pipe']);
