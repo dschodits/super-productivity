@@ -294,7 +294,7 @@ describe('AddTaskBarActionsComponent', () => {
       expect(getClearDeadlineBtn()).toBeNull();
     });
 
-    it('shows an empty deadline button without clear button when enabled', () => {
+    it('hides the deadline button when isHideDeadlineBtn is set', () => {
       fixture.componentRef.setInput('isHideDeadlineBtn', true);
       fixture.detectChanges();
 
