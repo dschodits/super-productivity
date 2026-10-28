@@ -1766,7 +1766,7 @@
         "DUE_BUTTON": "Schedule",
         "ESTIMATE_BUTTON": "Estimate",
         "NOTE_PLACEHOLDER": "Add a note… (Ctrl+Enter to add task)",
-        "PLACEHOLDER_CREATE": "A task title #tag @16:00 t25m !friday",
+        "PLACEHOLDER_CREATE": "A task title #tag @16:00 t25m",
         "PLACEHOLDER_SEARCH": "Add existing task or issues...",
         "REPEAT_BUTTON": "Repeat",
         "SEARCH_INFO_TEXT": "Search and add issues and tasks from archive and other projects",

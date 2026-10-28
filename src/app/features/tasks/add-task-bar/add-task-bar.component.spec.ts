@@ -225,7 +225,6 @@ describe('AddTaskBarComponent', () => {
       misc$: new BehaviorSubject<MiscConfig>(mockMiscConfig),
       tasks$: new BehaviorSubject({ defaultProjectId: null }),
       shortSyntax$: of({}),
-      shortSyntax: signal({}),
       localization: () => ({ timeLocale: DEFAULT_LOCALE }),
     });
     mockStore = jasmine.createSpyObj('Store', ['select', 'dispatch', 'pipe']);
@@ -1536,6 +1535,22 @@ describe('AddTaskBarComponent', () => {
 
       expect(component.stateService.inputTxt()).toBe('first line second third');
       expect(inputEl.value).toBe('first line second third');
+    });
+  });
+
+  describe('deadline button', () => {
+    const getDeadlineBtn = (): HTMLElement | null =>
+      fixture.nativeElement.querySelector('[data-test="add-task-bar-deadline-btn"]');
+
+    it('is shown with the default config', () => {
+      fixture.detectChanges();
+      expect(getDeadlineBtn()).not.toBeNull();
+    });
+
+    it('is hidden when planForDay is set', () => {
+      fixture.componentRef.setInput('planForDay', '2024-05-20');
+      fixture.detectChanges();
+      expect(getDeadlineBtn()).toBeNull();
     });
   });
 
